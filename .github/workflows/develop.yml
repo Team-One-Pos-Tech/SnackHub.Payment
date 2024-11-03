@@ -1,5 +1,4 @@
 name: Ambiente de Desenvolvimento
-runs-on: self-hosted
 on:
   push:
     branches: [ develop ]
@@ -9,7 +8,7 @@ on:
 jobs:
   build-and-test:
     name: "Run build and Tests"
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
 
