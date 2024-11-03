@@ -49,7 +49,7 @@ jobs:
         run: docker login ghcr.io -u kale19991 -p ${{ secrets.repositorycontainer }}
       
       - name: Docker pull image
-        run: docker pull image ${{ env.IMAGE }}
+        run: docker pull ${{ env.IMAGE }}
 
       - name: Execute script de deploy
         run: bash .github/workflows/deploy/deploy.sh --env ${{ env.IMAGE }}
