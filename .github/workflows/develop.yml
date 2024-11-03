@@ -32,6 +32,7 @@ jobs:
     name: "Deploy development"
     runs-on: [self-hosted, vmprod]
     needs: build-and-test
+    if: github.ref == 'refs/heads/develop'
     env:
       PASSWORD_ENV_SEEDED: ${{ secrets.PASSWORD_ENV_SEEDED }}
       IMAGE: "ghcr.io/team-one-pos-tech/snackhubpaymentapi"
