@@ -7,21 +7,10 @@ on:
 
 jobs:
   build-and-test:
-    name: "Run build and Tests"
-    runs-on: self-hosted
+    name: "Build docker compose"
+    runs-on: [self-hosted, vmbuild]
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 8.0.x
-
-      - name: Restore dependencies
-        run: dotnet restore SnackHub.Payment.sln
-
-      - name: Build
-        run: dotnet build SnackHub.Payment.sln --no-restore
-
-      - name: Test
-        run: dotnet test SnackHub.Payment.sln --no-build --verbosity normal
+      - name: Build Image
+        run: docker compose build
