@@ -1,7 +1,6 @@
 name: Continuous Integrations
 on:
-  push:
-    branches: [ "main" ]
+  workflow_call:
 
 jobs:
   build-and-test:
