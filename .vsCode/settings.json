@@ -1,0 +1,14 @@
+{  
+    "editor.formatOnSave": true, // Formata o código sempre que salvamos  
+    "editor.fontFamily": "Source Code Pro", // Fonte  
+    "editor.fontSize": 18, // Tamanho da Fonte  
+    "workbench.colorTheme": "Atom One Dark", // Tema  
+    "workbench.iconTheme": "vscode-icons", // Pacote de Ícones  
+    "workbench.startupEditor": "newUntitledFile", // Abre sempre um arquivo em branco  
+    "editor.minimap.enabled": false, // Desabilita o Mini Map  
+    "workbench.panel.defaultLocation": "right", // Deixa o terminal a direita  
+    "terminal.integrated.cursorStyle": "underline", // Deixa o cursor do terminal como underline  
+    "terminal.integrated.fontSize": 18, // Tamanho da fonte do terminal  
+    "git.enableSmartCommit": true, // Habilita Smart Commit do GIT  
+    "git.autofetch": true // Habilita Auto Fetch do GIT  
+}
