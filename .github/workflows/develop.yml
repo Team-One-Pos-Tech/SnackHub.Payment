@@ -22,11 +22,11 @@ jobs:
           username: '${{ github.actor }}'
           password: '${{ secrets.GITHUB_TOKEN }}'
 
-      - name: Build Image
-        run: docker compose build
-      
-      - name: Build down
-        run: docker compose down
+      - name: Build Docker image
+        run: |
+          docker build \
+            --build-arg PASSWORD_ENV_SEEDED=${{ secrets.PASSWORD_ENV_SEEDED }} \
+            -t ${{ env.IMAGE }} .
       
       - name: Push Image
         run: docker push ${{ env.IMAGE}}
