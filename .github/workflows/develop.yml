@@ -34,7 +34,7 @@ jobs:
     needs: build-and-test
     env:
       PASSWORD_ENV_SEEDED: ${{ secrets.PASSWORD_ENV_SEEDED }}
-      IMAGE: "ghcr.io/snackhubpaymentapi"
+      IMAGE: "ghcr.io/team-one-pos-tech/snackhubpaymentapi"
     steps:
       - uses: actions/checkout@v4
 
