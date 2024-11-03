@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  snackhubpaymentdev:
+    image: ${IMAGE}
+    networks:
+      - npm_public
+    ports:
+      - "5186:80"
+      - "7176:443"   
+    hostname: snackhubpaymentdev
+    environment:
+      IMAGE: ${IMAGE}
+      ASPNETCORE_Kestrel__Certificates__Default__Password: ${PASSWORD_ENV_SEEDED}
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /app/aspnetapp.pfx
+      APPDATA: /home/kalleimob/apiConfig
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: 80
+      ASPNETCORE_HTTPS_PORTS: 443
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      PASSWORD_ENV_SEEDED: ${PASSWORD_ENV_SEEDED}
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.snackhubpayment.rule=Host(`snackhubpaymentdev.kallesoft.com.br`)
+        - traefik.http.routers.snackhubpayment.entrypoints=websecure
+        - traefik.http.routers.snackhubpayment.tls.certresolver=le
+        - traefik.http.routers.snackhubpayment.service=snackhubpayment
+        - traefik.http.services.snackhubpayment.loadbalancer.server.port=5186
+
+networks:
+  npm_public:
+    external: true
