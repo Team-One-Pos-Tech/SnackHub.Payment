@@ -11,12 +11,16 @@ jobs:
     runs-on: [self-hosted, vmbuild]
     env:
       PASSWORD_ENV_SEEDED: ${{ secrets.PASSWORD_ENV_SEEDED }}
-      IMAGE: "ghcr.io/snackhubpaymentapi"
+      IMAGE: "ghcr.io/team-one-pos-tech/snackhubpaymentapi"
     steps:
       - uses: actions/checkout@v4
 
-      - name: Docker Login
-        run: docker login ghcr.io -u kale19991 -p ${{ secrets.repositorycontainer }}
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: '${{ github.actor }}'
+          password: '${{ secrets.GITHUB_TOKEN }}'
 
       - name: Build Image
         run: docker compose build
@@ -33,6 +37,13 @@ jobs:
       IMAGE: "ghcr.io/snackhubpaymentapi"
     steps:
       - uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: '${{ github.actor }}'
+          password: '${{ secrets.GITHUB_TOKEN }}'
 
       - name: Docker Login
         run: docker login ghcr.io -u kale19991 -p ${{ secrets.repositorycontainer }}
