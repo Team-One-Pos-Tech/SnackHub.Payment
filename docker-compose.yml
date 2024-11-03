@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   snackhub.payment.api:
-    image: ${DOCKER_REGISTRY-}snackhubpaymentapi
+    image: ${IMAGE}
     build:
       context: .
       dockerfile: src/SnackHub.Payment.Api/Dockerfile
