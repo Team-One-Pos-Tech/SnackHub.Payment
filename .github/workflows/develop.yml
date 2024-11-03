@@ -4,13 +4,13 @@ on:
     branches: [ develop ]
   pull_request:
     branches: [ develop ]
-  env:
-      PASSWORD_ENV_SEEDED: ${{ secrets.PASSWORD_ENV_SEEDED }}
 
 jobs:
   build-and-test:
     name: "Build docker compose"
     runs-on: [self-hosted, vmbuild]
+    env:
+      PASSWORD_ENV_SEEDED: ${{ secrets.PASSWORD_ENV_SEEDED }}
     steps:
       - uses: actions/checkout@v4
 
