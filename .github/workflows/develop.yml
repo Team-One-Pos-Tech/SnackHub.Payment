@@ -19,7 +19,7 @@ jobs:
         run: docker login ghcr.io -u kale19991 -p ${{ secrets.repositorycontainer }}
 
       - name: Build Image
-        run: docker compose buil
+        run: docker compose build
       
       - name: Push Image
         run: docker push ${{ env.IMAGE}}
@@ -27,6 +27,7 @@ jobs:
   Deploy:
     name: "Build docker compose"
     runs-on: [self-hosted, vmprod]
+    needs: build-and-test
     env:
       PASSWORD_ENV_SEEDED: ${{ secrets.PASSWORD_ENV_SEEDED }}
       IMAGE: "ghcr.io/snackhubpaymentapi"
