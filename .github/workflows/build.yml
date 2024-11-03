@@ -1,18 +1,25 @@
-name: My Workflow
-
+name: Continuous Integrations
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
-    inputs:
-      my_input:
-        description: My input parameter
-        required: true
-        default: teste
+    branches: [ "main" ]
 
 jobs:
-  my_job:
+  build-and-test:
+    name: "Run build and Tests"
     runs-on: ubuntu-latest
     steps:
-      - name: Use Input
-        run: echo "The input value is ${{ github.event.inputs.my_input }}"
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore SnackHub.Payment.sln
+
+      - name: Build
+        run: dotnet build SnackHub.Payment.sln --no-restore
+
+      - name: Test
+        run: dotnet test SnackHub.Payment.sln --no-build --verbosity normal
