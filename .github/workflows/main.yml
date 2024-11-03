@@ -6,6 +6,6 @@ on:
 
 jobs:
   build-and-deploy:
-    uses: ./.github/workflows/templates/build.yml
+    uses: ./.github/workflows/template.yml
     with:
       my_input: novo teste
