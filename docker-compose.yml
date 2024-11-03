@@ -6,3 +6,5 @@ services:
     build:
       context: .
       dockerfile: src/SnackHub.Payment.Api/Dockerfile
+      args:
+        PASSWORD_ENV_SEEDED: ${PASSWORD_ENV_SEEDED}
