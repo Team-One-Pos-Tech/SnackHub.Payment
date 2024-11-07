@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SnackHub.Payment.Domain\SnackHub.Payment.Domain.csproj" />
+    <ProjectReference Include="..\SnackHub.Payment.Infra\SnackHub.Payment.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>
