@@ -13,10 +13,10 @@ public class BaseReadOnlyService<TOutput, TEntity, TPk, TFilter> : IReadOnlyServ
     where TFilter : IFilter
     where TEntity : Entity<TPk>, IAggregateRoot
 {
-    private readonly ILogger<TOutput> _logger;
+    private readonly ILogger _logger;
     private readonly IMapper _mapper;
     private readonly IRepository<TEntity> _repository;
-    public BaseReadOnlyService(ILogger<TOutput> logger, IMapper mapper, IRepository<TEntity> repository)
+    public BaseReadOnlyService(ILogger logger, IMapper mapper, IRepository<TEntity> repository)
     {
         _logger = logger;
         _mapper = mapper;

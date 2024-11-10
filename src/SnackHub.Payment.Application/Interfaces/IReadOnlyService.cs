@@ -1,6 +1,6 @@
 namespace SnackHub.Payment.Application.Interfaces;
 
-public interface IReadOnlyService<TOutput, TPk, TFilter>
+public interface IReadOnlyService<TOutput, in TPk, in TFilter>
     where TOutput : class
     where TPk : IComparable 
     where TFilter : IFilter
