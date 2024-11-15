@@ -44,6 +44,11 @@ public class MercagoPagaGateway : IGatewayPayment
 
     }
 
+    public Customer GetCustomer(string id)
+    {
+        throw new NotImplementedException();
+    }
+
     public Domain.Entities.Payment GetCustomerByPayment(string id)
      => this.GetPayment(id);
 

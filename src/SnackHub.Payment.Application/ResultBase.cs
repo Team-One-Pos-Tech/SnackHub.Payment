@@ -15,6 +15,7 @@ public class ResultBase<TOutput> where TOutput : class
         this.Messagens = messages;
         this.Data = data;
     }
+    [SetsRequiredMembers]
     public ResultBase(ValidationResult validationResult)
     {
         this.IsSuccess = validationResult.IsValid;
@@ -31,6 +32,9 @@ public class ResultBase<TOutput> where TOutput : class
 
     public static ResultBase<TOutput> Success(TOutput data, List<Messagem> messages)
      => new ResultBase<TOutput>(true, data, messages);
+
+    public static ResultBase<TOutput> Failed(ValidationResult validationResult)
+     => new ResultBase<TOutput>(validationResult);
 
     public static ResultBase<TOutput> Failed(List<Messagem> messages)
      => new ResultBase<TOutput>(false, default, messages);

@@ -10,7 +10,8 @@ namespace SnackHub.Payment.Application.Mappers.PaymentMapper
             CreateMap<MercadoPago.Resource.Payment.PaymentPayer, Domain.Entities.Customer>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.CustomerRefID, opt => opt.MapFrom(x => x.Id))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(x => $"{x.FirstName} {x.LastName}"))
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(x => x.FirstName))
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(x => x.LastName))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(x => x.Email))
                 .ReverseMap();
 

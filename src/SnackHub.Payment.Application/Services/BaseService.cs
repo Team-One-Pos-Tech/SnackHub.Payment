@@ -1,9 +1,6 @@
 using AutoMapper;
+using FluentValidation;
 using Microsoft.Extensions.Logging;
-using SnackHub.Payment.Application.Interfaces;
-using SnackHub.Payment.Domain.Entities;
-using SnackHub.Payment.Domain.Interface;
-using SnackHub.Payment.Infra.interfaces;
 
 namespace SnackHub.Payment.Application.Services;
 

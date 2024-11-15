@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.Extensions.Logging;
 
 namespace SnackHub.Payment.Application.Services
@@ -9,10 +11,14 @@ namespace SnackHub.Payment.Application.Services
         {
         }
 
-        public ResultBase<TOutPut> ResultOperation<TOutPut>(Func<TOutPut> operation) where TOutPut : class
+        public ResultBase<TOutPut> ResultOperation<TOutPut>(ValidationResult validator = null, Func<TOutPut> operation = default) where TOutPut : class
         {
             try
             {
+                if (validator is not null || validator != default)
+                    if (!validator.IsValid)
+                        return ResultBase<TOutPut>.Failed(validator);
+
                 if (operation() == default)
                     return ResultBase<TOutPut>.Failed(ResultBase<TOutPut>.CreatedMessages(1, "Ocorreu um erro, tente novamente mais tarde!"));
 

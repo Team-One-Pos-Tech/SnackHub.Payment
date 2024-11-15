@@ -18,5 +18,7 @@ public static class DependencyInjection
         services.AddRepositoryConfigurations();
 
         services.AddServiceConfiguration();
+
+        services.AddFluentValidation();
     }
 }

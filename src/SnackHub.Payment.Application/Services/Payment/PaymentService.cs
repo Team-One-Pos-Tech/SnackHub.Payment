@@ -16,14 +16,14 @@ internal class PaymentService : ServiceAuditavel, IPaymentService
     }
 
     public ResultBase<CustomerVM> GetCustomerByPayment(string id)
-     => ResultOperation(() =>
+     => ResultOperation((null), () =>
      {
          var payment = _gatewayPayment.GetCustomerByPayment(id);
          return Mapper.Map<CustomerVM>(payment.Customer);
      });
 
     public ResultBase<PaymentVM> GetPayment(string id)
-     => ResultOperation(() =>
+     => ResultOperation((null), () =>
      {
          var payment = _gatewayPayment.GetPayment(id);
          return Mapper.Map<PaymentVM>(payment);
