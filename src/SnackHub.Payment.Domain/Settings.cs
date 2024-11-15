@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace SnackHub.Payment.Domain
 {
-    public class ConfiguracaoApp
+    public class Settings
     {
         public Mercadopago MercadoPago { get; set; }
     }
 
+    public class Endpoint
+    {
+        public string BasePath { get; set; }
+    }
     public class Mercadopago
     {
         public string BaseUrl { get; set; }

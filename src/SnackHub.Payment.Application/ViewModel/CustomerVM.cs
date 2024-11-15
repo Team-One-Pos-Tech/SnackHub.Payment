@@ -2,5 +2,8 @@ namespace SnackHub.Payment.Application.ViewModel;
 
 public class CustomerVM
 {
-    public string Name { get; set; }
+    public Guid Id { get; private set; }
+    public string? Name { get; set; }
+    public required string Email { get; set; }
+    public string? Phone { get; set; }
 }

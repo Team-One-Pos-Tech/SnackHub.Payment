@@ -8,10 +8,19 @@ namespace SnackHub.Payment.Application.Services;
 
 internal class PaymentService : ServiceAuditavel, IPaymentService
 {
-    public PaymentService(ILogger<Domain.Entities.Payment> logger, IMapper mapper) : base(logger, mapper)
+    private readonly IGatewayPayment _gatewayPayment;
+    public PaymentService(ILogger<PaymentService> logger, IMapper mapper, IGatewayPayment gatewayPayment) : base(logger, mapper)
     {
+        _gatewayPayment = gatewayPayment;
     }
 
-    public ResultBase<CustomerVM> GetCustomerByPayment(int id)
+    public ResultBase<CustomerVM> GetCustomerByPayment(string id)
      => ResultOperation<CustomerVM>(() => {  return default; });
+
+    public ResultBase<PaymentVM> GetPayment(string id)
+     => ResultOperation<PaymentVM>(() => 
+     { 
+         var payment = _gatewayPayment.GetPayment(id);
+         return Mapper.Map<PaymentVM>(payment);
+     });
 }

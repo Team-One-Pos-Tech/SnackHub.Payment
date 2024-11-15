@@ -4,5 +4,6 @@ namespace SnackHub.Payment.Application.Interfaces;
 
 public interface IPaymentService
 {
-    ResultBase<CustomerVM> GetCustomerByPayment(int id);
+    ResultBase<CustomerVM> GetCustomerByPayment(string id);
+    ResultBase<PaymentVM> GetPayment(string id);
 }

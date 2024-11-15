@@ -1,14 +1,12 @@
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using SnackHub.Payment.Api.Endpoints;
+using SnackHub.Payment.Api.Endpoints.Customer;
+using SnackHub.Payment.Api.Endpoints.Payment;
 using SnackHub.Payment.Domain;
 using SnackHub.Payment.Ioc;
-using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOptions();
-builder.Services.AddSingleton<ConfiguracaoApp>(builder.Configuration.GetSection("ConfiguracaoApp").Get<ConfiguracaoApp>()!);
+builder.Services.AddSingleton<Settings>(builder.Configuration.GetSection("Settings").Get<Settings>()!);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -44,4 +42,5 @@ app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);
 
 app.AddCustomerEndpoints();
+app.AddPaymentEndpoints();
 app.Run();

@@ -2,7 +2,7 @@ namespace SnackHub.Payment.Domain.Enums;
 
 public enum PaymentMethod
 {
-    Pik = 1,
+    Pix = 1,
     CreditCard,
     Money,
 }
