@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SnackHub.Payment.Application.Interfaces;
-using SnackHub.Payment.Application.Services;
+using SnackHub.Payment.Application.Interfaces.Payment;
+using SnackHub.Payment.Application.Services.Payment;
 using System;
 using System.Collections.Generic;
 using System.Linq;

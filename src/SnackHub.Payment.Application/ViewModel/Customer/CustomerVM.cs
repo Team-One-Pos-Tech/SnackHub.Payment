@@ -1,4 +1,4 @@
-namespace SnackHub.Payment.Application.ViewModel;
+namespace SnackHub.Payment.Application.ViewModel.Customer;
 
 public class CustomerVM
 {

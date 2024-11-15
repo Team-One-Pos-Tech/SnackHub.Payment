@@ -9,6 +9,7 @@ namespace SnackHub.Payment.Domain
     public class Settings
     {
         public Mercadopago MercadoPago { get; set; }
+        public Endpoint Endpoint { get; set; }
     }
 
     public class Endpoint

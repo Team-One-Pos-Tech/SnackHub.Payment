@@ -44,6 +44,9 @@ public class MercagoPagaGateway : IGatewayPayment
 
     }
 
+    public Domain.Entities.Payment GetCustomerByPayment(string id)
+     => this.GetPayment(id);
+
     public Domain.Entities.Payment GetPayment(string id)
     {
         try

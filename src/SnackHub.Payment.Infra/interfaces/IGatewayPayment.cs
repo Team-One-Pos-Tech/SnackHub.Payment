@@ -9,4 +9,5 @@ public interface IGatewayPayment
     List<Customer> ListCustomers();
     Domain.Entities.Payment PaymentCreate(Domain.Entities.Payment input);
     Domain.Entities.Payment GetPayment(string id);
+    Domain.Entities.Payment GetCustomerByPayment(string id);
 }

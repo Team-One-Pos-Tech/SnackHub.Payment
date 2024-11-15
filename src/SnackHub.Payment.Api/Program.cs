@@ -6,7 +6,8 @@ using SnackHub.Payment.Ioc;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOptions();
-builder.Services.AddSingleton<Settings>(builder.Configuration.GetSection("Settings").Get<Settings>()!);
+var settings = builder.Configuration.GetSection("Settings").Get<Settings>()!;
+builder.Services.AddSingleton<Settings>(settings);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -41,6 +42,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);
 
-app.AddCustomerEndpoints();
-app.AddPaymentEndpoints();
+app.AddCustomerEndpoints(settings);
+app.AddPaymentEndpoints(settings);
 app.Run();

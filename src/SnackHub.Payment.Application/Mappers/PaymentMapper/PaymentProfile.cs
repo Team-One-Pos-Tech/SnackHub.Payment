@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SnackHub.Payment.Application.ViewModel;
+using SnackHub.Payment.Application.ViewModel.Payment;
 
 namespace SnackHub.Payment.Application.Mappers.PaymentMapper
 {

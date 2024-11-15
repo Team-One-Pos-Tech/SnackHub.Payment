@@ -1,6 +1,7 @@
-﻿using SnackHub.Payment.Domain.Enums;
+﻿using SnackHub.Payment.Application.ViewModel.Customer;
+using SnackHub.Payment.Domain.Enums;
 
-namespace SnackHub.Payment.Application.ViewModel
+namespace SnackHub.Payment.Application.ViewModel.Payment
 {
     public class PaymentVM
     {
