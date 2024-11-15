@@ -5,7 +5,6 @@ namespace SnackHub.Payment.Infra.interfaces;
 
 public interface IRepository<TEntity> : IDisposable where TEntity : IAggregateRoot
 {
-    IUnitOfWork UnitOfWork { get; }
     /// <summary>
     /// Inseri entidade no banco.
     /// </summary>

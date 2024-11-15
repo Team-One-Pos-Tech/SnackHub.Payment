@@ -4,19 +4,17 @@ using SnackHub.Payment.Domain.Interface;
 using SnackHub.Payment.Infra.Contexts;
 using SnackHub.Payment.Infra.interfaces;
 
-namespace SnackHub.Payment.Infra.Repositories;
+namespace SnackHub.Payment.Infra.Repositories.Base;
 
-public class Repository<TEntity> : IRepository<TEntity>  where TEntity : class, IAggregateRoot
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, IAggregateRoot
 {
     private readonly PaymentContext _context;
     private readonly DbSet<TEntity> _DbSet;
     private readonly string _connectionString;
-    public IUnitOfWork UnitOfWork { get; }
 
-    public Repository(PaymentContext context, IUnitOfWork unitOfWork)
+    public Repository(PaymentContext context)
     {
         _context = context;
-        UnitOfWork = unitOfWork;
         _DbSet = context.Set<TEntity>();
         _connectionString = _context.Database.GetDbConnection().ConnectionString;
     }

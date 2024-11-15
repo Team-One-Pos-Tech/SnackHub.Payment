@@ -3,4 +3,4 @@ using SnackHub.Payment.Domain.Entities;
 
 namespace SnackHub.Payment.Application.Interfaces;
 
-public interface ICustomerService : IBaseService<CustomerVM, Customer, Guid, FilterBase> {}
+public interface ICustomerService : IBaseService {}
