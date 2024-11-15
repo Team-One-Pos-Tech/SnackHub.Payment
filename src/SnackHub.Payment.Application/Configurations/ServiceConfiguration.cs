@@ -1,11 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SnackHub.Payment.Application.Interfaces.Customer;
 using SnackHub.Payment.Application.Interfaces.Payment;
+using SnackHub.Payment.Application.Services.Customer;
 using SnackHub.Payment.Application.Services.Payment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SnackHub.Payment.Application.Configurations
 {
@@ -13,6 +10,7 @@ namespace SnackHub.Payment.Application.Configurations
     {
         public static void AddServiceConfiguration(this IServiceCollection services)
         {
+            services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IPaymentService, PaymentService>();
         }
     }
