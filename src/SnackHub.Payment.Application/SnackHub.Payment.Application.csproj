@@ -8,6 +8,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SnackHub.Payment.Domain\SnackHub.Payment.Domain.csproj" />
+    <ProjectReference Include="..\SnackHub.Payment.Infra\SnackHub.Payment.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.10.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0-rc.2.24473.5" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
   </ItemGroup>
 
 </Project>
