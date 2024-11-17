@@ -32,13 +32,15 @@ public class MercagoPagaGateway : IGatewayPayment
     {
         try
         {
+            _logger.LogInformation("Usuário iniciou processo de criar cliente.");
             var request = _mapper.Map<CustomerRequest>(customer);
             var customerapi = _customerClient.Create(request, _options);
             customer.CustomerRefID = customerapi.Id;
             return customer;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            _logger.LogError(ex, "Ocorreu um erro ao tentar criar cliente, tente novamente mais tarde!");
             throw;
         }
 
@@ -46,7 +48,37 @@ public class MercagoPagaGateway : IGatewayPayment
 
     public Customer GetCustomer(string id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _logger.LogInformation("Usuário iniciou processo de buscar cliente");
+            var customer = _customerClient.Get(id, _options);
+            var output = _mapper.Map<MercadoPago.Resource.Customer.Customer, Customer>(customer);
+            return output;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Ocorreu um erro ao tentar buscar cliente, tente novamente mais tarde!");
+            throw;
+        }
+    }
+
+    public List<Customer> GetCustomerByEmail(string email)
+    {
+        try
+        {
+            _logger.LogInformation("Usuário iniciou processo de buscar cliente");
+            var search = new SearchRequest();
+            search.Filters = new Dictionary<string, object>();
+            search.Filters.Add("email", email);
+            var customer = _customerClient.Search(search, _options);
+            var output = _mapper.Map<IList<MercadoPago.Resource.Customer.Customer>, List<Customer>>(customer.Results);
+            return output;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Ocorreu um erro ao tentar buscar cliente, tente novamente mais tarde!");
+            throw;
+        }
     }
 
     public Domain.Entities.Payment GetCustomerByPayment(string id)
@@ -73,14 +105,13 @@ public class MercagoPagaGateway : IGatewayPayment
     {
         try
         {
-            var customersApi = _customerClient.Search(new SearchRequest()
-            {
-
-            });
+            _logger.LogInformation("Usuário iniciou processo de criar pagamento");
+            var customersApi = _customerClient.Search(new SearchRequest());
             return _mapper.Map<List<Customer>>(customersApi.Results);
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
+            _logger.LogError(ex,"Ocorreu um erro ao tentar criar pagamento, tente novamente mais tarde!");
             throw;
         }
     }
@@ -95,9 +126,9 @@ public class MercagoPagaGateway : IGatewayPayment
             var output = _mapper.Map<MercadoPago.Resource.Payment.Payment, Domain.Entities.Payment>(paymentResponse);
             return output;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            _logger.LogError("Ocorreu um erro ao tentar criar pagamento, tente novamente mais tarde!");
+            _logger.LogError(ex, "Ocorreu um erro ao tentar criar pagamento, tente novamente mais tarde!");
             throw;
         }
     }

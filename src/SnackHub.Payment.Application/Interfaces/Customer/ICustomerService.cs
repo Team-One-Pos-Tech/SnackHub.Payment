@@ -8,6 +8,7 @@ public interface ICustomerService : IBaseService
     ResultBase<CustomerVM> CreateCustomer(CustomerInput input);
     ResultBase<CustomerVM> UpdateCustomer(CustomerInput input, Guid id);
     ResultBase<CustomerVM> GetCustomer(Guid id);
-    ResultBase<CustomerVM> GetCustomerByEmail(string email);
+    ResultBase<List<CustomerVM>> GetCustomer();
+    ResultBase<List<CustomerVM>> GetCustomerByEmail(string email);
 
 }

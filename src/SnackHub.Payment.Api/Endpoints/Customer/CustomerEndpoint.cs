@@ -43,5 +43,36 @@ public static class CustomerEndpoint
         }).WithTags(tag)
             .WithName("updatecustomer")
             .WithOpenApi();
+
+        app.MapGet($"{path}", ([FromServices] ICustomerService service) =>
+        {
+            var result = service.GetCustomer();
+            if (result.IsSuccess)
+                return Results.Ok(result);
+            return Results.BadRequest(result);
+        }).WithTags(tag)
+            .WithName("getcustomer")
+            .WithOpenApi();
+
+        
+        app.MapGet($"{path}/{{id}}", ([FromRoute] Guid id, [FromServices] ICustomerService service) =>
+        {
+            var result = service.GetCustomer(id);
+            if (result.IsSuccess)
+                return Results.Ok(result);
+            return Results.BadRequest(result);
+        }).WithTags(tag)
+            .WithName("getcustomerByID")
+            .WithOpenApi();
+
+        app.MapGet($"{path}/search{{email}}", ([FromRoute] string email, [FromServices] ICustomerService service) =>
+        {
+            var result = service.GetCustomerByEmail(email);
+            if (result.IsSuccess)
+                return Results.Ok(result);
+            return Results.BadRequest(result);
+        }).WithTags(tag)
+            .WithName("getcustomerbyemail")
+            .WithOpenApi();
     }
 }

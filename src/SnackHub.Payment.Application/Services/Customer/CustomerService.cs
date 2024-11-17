@@ -25,15 +25,24 @@ internal class CustomerService : ServiceAuditavel, ICustomerService
             return Mapper.Map<CustomerVM>(customer);
         });
 
+    public ResultBase<List<CustomerVM>> GetCustomer()
+    => ResultOperation((null), () =>
+    {
+        var customers = _gatewayPayment.ListCustomers();
+        return Mapper.Map<List<CustomerVM>>(customers);
+    });
+
     public ResultBase<CustomerVM> GetCustomer(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public ResultBase<CustomerVM> GetCustomerByEmail(string email)
-    {
-        throw new NotImplementedException();
-    }
+    public ResultBase<List<CustomerVM>> GetCustomerByEmail(string email)
+        => ResultOperation((null), () =>
+        {
+            var customers = _gatewayPayment.GetCustomerByEmail(email);
+            return Mapper.Map<List<CustomerVM>>(customers);
+        });
 
     public ResultBase<CustomerVM> UpdateCustomer(CustomerInput input, Guid id)
     {

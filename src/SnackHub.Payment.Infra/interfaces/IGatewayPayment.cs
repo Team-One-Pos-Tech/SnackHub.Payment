@@ -7,6 +7,7 @@ public interface IGatewayPayment
 
     Customer CreateCustomer(Customer customer);
     Customer GetCustomer(string id);
+    List<Customer> GetCustomerByEmail(string email);
     List<Customer> ListCustomers();
     Domain.Entities.Payment PaymentCreate(Domain.Entities.Payment input);
     Domain.Entities.Payment GetPayment(string id);
