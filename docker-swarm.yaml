@@ -6,8 +6,8 @@ services:
     networks:
       - npm_public
     ports:
-      - "5186:80"
-      - "7176:443"   
+      - "5187:80"
+      - "7177:443"   
     hostname: snackhubpaymentdev
     environment:
       IMAGE: ${IMAGE}

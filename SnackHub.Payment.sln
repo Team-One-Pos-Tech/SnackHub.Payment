@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnackHub.Payment.Test", "te
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{23724D95-9BE9-4E4A-B87D-E9EC9B641C3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnackHub.Payment.Infra", "src\SnackHub.Payment.Infra\SnackHub.Payment.Infra.csproj", "{DA684223-1D1D-4CF5-8B98-B032682F0253}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{23724D95-9BE9-4E4A-B87D-E9EC9B641C3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23724D95-9BE9-4E4A-B87D-E9EC9B641C3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23724D95-9BE9-4E4A-B87D-E9EC9B641C3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA684223-1D1D-4CF5-8B98-B032682F0253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA684223-1D1D-4CF5-8B98-B032682F0253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA684223-1D1D-4CF5-8B98-B032682F0253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA684223-1D1D-4CF5-8B98-B032682F0253}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,5 +65,6 @@ Global
 		{9833A5E5-23B1-418E-88C4-B3E1639600EE} = {D7DF088E-5BA0-44C3-AABD-DD67A10C3973}
 		{D470ED5C-CDAF-4944-B3BB-76EDF8ED579E} = {D7DF088E-5BA0-44C3-AABD-DD67A10C3973}
 		{EDD57039-7EE1-44A8-8623-1DBFFC642AC6} = {9363B179-3CB4-4A1A-86C7-A4A92F81359B}
+		{DA684223-1D1D-4CF5-8B98-B032682F0253} = {D7DF088E-5BA0-44C3-AABD-DD67A10C3973}
 	EndGlobalSection
 EndGlobal

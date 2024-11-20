@@ -14,6 +14,7 @@ RUN dotnet dev-certs https -ep /src/aspnetapp.pfx -p ${PASSWORD_ENV_SEEDED}
 
 COPY ["src/SnackHub.Payment.Api/SnackHub.Payment.Api.csproj", "src/SnackHub.Payment.Api/"]
 COPY ["src/SnackHub.Payment.Ioc/SnackHub.Payment.Ioc.csproj", "src/SnackHub.Payment.Ioc/"]
+COPY ["src/SnackHub.Payment.Infra/SnackHub.Payment.Infra.csproj", "src/SnackHub.Payment.Infra/"]
 COPY ["src/SnackHub.Payment.Application/SnackHub.Payment.Application.csproj", "src/SnackHub.Payment.Application/"]
 COPY ["src/SnackHub.Payment.Domain/SnackHub.Payment.Domain.csproj", "src/SnackHub.Payment.Domain/"]
 RUN dotnet restore "./src/SnackHub.Payment.Api/./SnackHub.Payment.Api.csproj"
