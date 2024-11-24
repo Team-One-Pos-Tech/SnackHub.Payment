@@ -25,20 +25,9 @@ public class ListPaymentUseCase : IListPaymentUseCase
     }
 
     
-    public async Task<IEnumerable<PaymentTransactionResponse>> ExecuteAsync(ListPaymentByStateRequest listPaymentByStateRequest)
+    public async Task<IEnumerable<PaymentTransactionResponse>?> ExecuteAsync(ListPaymentByStateRequest listPaymentByStateRequest)
     {
         var state = (PaymentTransactionState)listPaymentByStateRequest.State;
-        
-        //     switch
-        // {
-        //     TransactionState.Accepted => PaymentTransactionState.Accepted,
-        //     TransactionState.Refused => PaymentTransactionState.Refused,
-        //     TransactionState.Approved => PaymentTransactionState.Approved,
-        //     TransactionState.Rejected => PaymentTransactionState.Rejected,
-        //     TransactionState.Canceled => PaymentTransactionState.Canceled,
-        //     _ => throw new ArgumentOutOfRangeException()
-        // };
-
         var transactions = await _transactionRepository.ListTransactionsStateAsync(state);
 
         return transactions

@@ -6,5 +6,5 @@ namespace SnackHub.Payment.Application.Contracts;
 
 public interface IListPaymentUseCase
 {
-    Task<IEnumerable<PaymentTransactionResponse>> ExecuteAsync(ListPaymentByStateRequest listPaymentByStateRequest);
+    Task<IEnumerable<PaymentTransactionResponse>?> ExecuteAsync(ListPaymentByStateRequest listPaymentByStateRequest);
 }

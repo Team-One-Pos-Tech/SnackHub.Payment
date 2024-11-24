@@ -45,7 +45,7 @@ public class PaymentManagerUseCase : IPaymentManagerUseCase
         if (transaction is null)
         {
             _logger.LogError("Transaction with id: {TransactionId} not found", transactionId);
-            return;
+            throw new InvalidOperationException($"Transaction with id: {transactionId} not found");
         }
         
         transaction.Status = nextState;
