@@ -2,20 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SnackHub.Payment.Domain\SnackHub.Payment.Domain.csproj" />
-    <ProjectReference Include="..\SnackHub.Payment.Infra\SnackHub.Payment.Infra.csproj" />
+    <PackageReference Include="Flunt" Version="2.0.5" />
+    <PackageReference Include="MassTransit" Version="8.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="FluentValidation" Version="11.10.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0-rc.2.24473.5" />
-    <PackageReference Include="RestSharp" Version="112.1.0" />
+    <Folder Include="Contracts\" />
+    <Folder Include="EventConsumers\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SnackHub.Payment.Domain\SnackHub.Payment.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,33 +1,13 @@
-using SnackHub.Payment.Api.Endpoints.Customer;
-using SnackHub.Payment.Api.Endpoints.Payment;
-using SnackHub.Payment.Domain;
-using SnackHub.Payment.Ioc;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOptions();
-var settings = builder.Configuration.GetSection("Settings").Get<Settings>()!;
-builder.Services.AddSingleton<Settings>(settings);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMainProject(builder.Configuration);
-
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("https://snackhubpaymentdev.kallesoft.com.br/",
-                                              "https://snackhubadmindev.kallesoft.com.br/");
-                      });
-});
-
-
 
 
 var app = builder.Build();
@@ -40,8 +20,4 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors(MyAllowSpecificOrigins);
-
-app.AddCustomerEndpoints(settings);
-app.AddPaymentEndpoints(settings);
 app.Run();
