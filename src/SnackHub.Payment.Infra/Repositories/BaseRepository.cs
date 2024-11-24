@@ -5,8 +5,8 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using SnackHub.Payment.Infra.Extensions;
 using SnackHub.Payment.Infra.Repositories.Abstractions;
-using SnackHub.Production.Infra.Extensions;
 
 namespace SnackHub.Payment.Infra.Repositories;
 
@@ -34,6 +34,12 @@ public class BaseRepository<TModel, TDbContext> : IBaseRepository<TModel>
         await _dbSet.AddAsync(model);
         await CompleteAsync();
     }
+    
+    public async Task InsertManyAsync(IEnumerable<TModel> models)
+    {
+        await _dbSet.AddRangeAsync(models);
+        await CompleteAsync();
+    }
 
     public async Task UpdateAsync(TModel model)
     {
@@ -54,13 +60,7 @@ public class BaseRepository<TModel, TDbContext> : IBaseRepository<TModel>
         _dbSet.Remove(model);
         await CompleteAsync();
     }
-
-    public async Task<int> CountAsync(Expression<Func<TModel, bool>> predicate)
-    {
-        return await _dbSet
-            .CountAsync(predicate);
-    }
-
+    
     public async Task<IEnumerable<TModel>> ListByPredicateAsync(Expression<Func<TModel, bool>> predicate)
     {
         return await _dbSet
@@ -78,35 +78,12 @@ public class BaseRepository<TModel, TDbContext> : IBaseRepository<TModel>
             .Where(predicate)
             .FirstOrDefaultAsync();
     }
-
-    public async Task<(int pageNumber, int pageSize, int lastPage, IEnumerable<TModel> items)> ListPaginateAsync(
-        Expression<Func<TModel, bool>> predicate, int pageNumber, int pageSize)
-    {
-        var count = await _dbSet
-            .AsNoTracking()
-            .Where(predicate)
-            .CountAsync();
-
-        if (count == 0)
-            return (pageNumber, pageSize, 1, new List<TModel>());
-
-        var elements = await _dbSet
-            .Inflate(_expandProperties)
-            .Where(predicate)
-            .Skip((pageNumber - 1) * pageSize)
-            .Take(pageSize)
-            .ToListAsync();
-
-        var totalPages = count / pageSize;
-        if (count % pageSize != 0) totalPages++;
-
-        return (pageNumber, pageSize, totalPages, elements);
-    }
-
+    
     private async Task CompleteAsync()
     {
         //TODO: Move it to a better context {UnitOfWork or Transactions based}
         _logger.LogInformation("Storing context data!");
         await _dbContext.SaveChangesAsync();
+        _dbContext.ChangeTracker.Clear();
     }
 }

@@ -13,12 +13,12 @@ namespace SnackHub.Payment.Application.UseCases;
 public class PaymentManagerUseCase : IPaymentManagerUseCase
 {
     
-    private readonly ILogger<ListPaymentUseCase> _logger;
+    private readonly ILogger<PaymentManagerUseCase> _logger;
     private readonly ITransactionRepository _transactionRepository;
     private readonly IPublishEndpoint _publishEndpoint;
 
     public PaymentManagerUseCase(
-        ILogger<ListPaymentUseCase> logger, 
+        ILogger<PaymentManagerUseCase> logger, 
         ITransactionRepository transactionRepository, 
         IPublishEndpoint publishEndpoint)
     {

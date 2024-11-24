@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace SnackHub.Payment.Infra.Contexts;
+namespace SnackHub.Payment.Infra.Repositories.Contexts;
 
 public class PaymentContext : DbContext
 {

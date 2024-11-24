@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SnackHub.Payment.Domain.Contracts;
-using SnackHub.Payment.Infra.Contexts;
 using SnackHub.Payment.Infra.Repositories;
+using SnackHub.Payment.Infra.Repositories.Contexts;
 using SnackHub.Production.Api.Configuration;
 
 namespace SnackHub.Payment.Api.Extensions;

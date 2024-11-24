@@ -2,4 +2,4 @@ using System;
 
 namespace SnackHub.Payment.Domain.Entities;
 
-public record Client(Guid Identifier, string Name, string Email);
+public record Client(Guid Id, string Name, string Cpf, string? Email = null);

@@ -9,12 +9,10 @@ namespace SnackHub.Payment.Domain.Contracts;
 public interface ITransactionRepository
 {
     Task CreateAsync(PaymentTransaction paymentTransaction);
+    Task CreateManyAsync(IEnumerable<PaymentTransaction> paymentTransactions);
     Task EditAsync(PaymentTransaction paymentTransaction);
 
     Task<PaymentTransaction?> GetByIdAsync(Guid id);
-    Task<PaymentTransaction?> GetTransactionByOrderIdAsync(Guid orderId);
-    Task<IEnumerable<PaymentTransaction>> ListTransactionsByClientIdAsync(Guid clientId);
-    
     Task<IEnumerable<PaymentTransaction>> ListTransactionsStateAsync(PaymentTransactionState transactionState);
 
 }
