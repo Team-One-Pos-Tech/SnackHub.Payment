@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using SnackHub.Payment.Domain.Contracts;
 using SnackHub.Payment.Domain.Entities;
+using SnackHub.Payment.Domain.Enums;
 using SnackHub.Payment.Infra.Contexts;
 
 namespace SnackHub.Payment.Infra.Repositories;
@@ -39,5 +40,10 @@ public class TransactionRepository : BaseRepository<PaymentTransaction, PaymentC
     public async Task<IEnumerable<PaymentTransaction>> ListTransactionsByClientIdAsync(Guid clientId)
     {
         return await ListByPredicateAsync(transaction => transaction.ClientId.Equals(clientId)) ?? [];
+    }
+
+    public async Task<IEnumerable<PaymentTransaction>> ListTransactionsStateAsync(PaymentTransactionState transactionState)
+    {
+        return await ListByPredicateAsync(transaction => transaction.Status.Equals(transactionState)) ?? [];
     }
 }

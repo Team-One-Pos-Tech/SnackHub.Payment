@@ -1,9 +1,9 @@
 using System;
-using SnackHub.Payment.Domain.Enums;
+using SnackHub.Payment.Application.Models.Payment.Enums;
 
-namespace SnackHub.Payment.Domain.Entities;
+namespace SnackHub.Payment.Application.Models.Payment;
 
-public record PaymentTransaction
+public record PaymentTransactionResponse
 {
     public Guid Id { get; init; }
     public Guid OrderId { get; init; }
@@ -12,7 +12,6 @@ public record PaymentTransaction
     
     public DateTime CreatedAt { get; init; }
     public DateTime UpdatedAt { get; init; }
-    
-    public PaymentTransactionState Status { get; set; }
-    
+
+    public TransactionState Status { get; init; }
 }

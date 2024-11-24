@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
-
-namespace SnackHub.Payment.Api.Endpoints.Payment
+﻿namespace SnackHub.Payment.Api.Endpoints.Payment
 {
     public static class PaymentEndpoint
     {

@@ -1,22 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-  
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.1" />
 
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10"/>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SnackHub.Payment.Application\SnackHub.Payment.Application.csproj" />
+    <ProjectReference Include="..\SnackHub.Payment.Infra\SnackHub.Payment.Infra.csproj" />
   </ItemGroup>
 
 </Project>

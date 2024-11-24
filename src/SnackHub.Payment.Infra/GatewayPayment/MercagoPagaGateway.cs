@@ -1,12 +1,3 @@
-using AutoMapper;
-using MercadoPago.Client;
-using MercadoPago.Client.Customer;
-using MercadoPago.Client.Payment;
-using MercadoPago.Config;
-using MercadoPago.Http;
-using Microsoft.Extensions.Logging;
-using SnackHub.Payment.Domain.Entities;
-
 namespace SnackHub.Payment.Infra.GatewayPayment;
 
 // public class MercagoPagaGateway : IGatewayPayment

@@ -1,6 +1,4 @@
 using MassTransit;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using SnackHub.Payment.Api.Configuratinon;
 using SnackHub.Payment.Application.EventConsumers.Client;
 

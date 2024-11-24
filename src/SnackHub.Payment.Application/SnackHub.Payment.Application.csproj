@@ -13,8 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="EventConsumers\" />
+    <Folder Include="EventConsumers\Order\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

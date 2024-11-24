@@ -1,14 +1,19 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using SnackHub.Payment.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOptions();
+// Add services to the container.
 
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder
+    .Services
+    .AddDatabaseContext(builder.Configuration)
+    .AddMassTransit(builder.Configuration)
+    .AddRepositories()
+    .AddUseCases();
 
 var app = builder.Build();
 
