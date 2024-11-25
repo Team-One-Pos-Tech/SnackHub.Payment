@@ -50,7 +50,7 @@ public class PaymentManagerUseCaseStepDefinitions : PostgreSqlFixture
     [Given("a client with id '(.*)' and name '(.*)' and CPF '(.*)'")]
     public async Task GivenAClientWithIdAndNameAndCpf(Guid id, string name, string cpf)
     {
-        var client = new Client(id, name, cpf);
+        var client = Client.Create(id, name, cpf);
         await _clientRepository.AddAsync(client);
     }
 

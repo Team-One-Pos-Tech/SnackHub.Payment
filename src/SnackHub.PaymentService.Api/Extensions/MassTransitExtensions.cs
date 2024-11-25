@@ -1,6 +1,7 @@
 using MassTransit;
 using SnackHub.PaymentService.Api.Configuratinon;
 using SnackHub.PaymentService.Application.EventConsumers.Client;
+using SnackHub.PaymentService.Application.EventConsumers.Payment;
 
 namespace SnackHub.PaymentService.Api.Extensions;
 
@@ -15,6 +16,7 @@ public static class MassTransitExtensions
             busConfigurator.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("payment-service"));
             
             busConfigurator.AddConsumer<ClientCreatedConsumer>();
+            busConfigurator.AddConsumer<PaymentRequestedConsumer>();
             
             busConfigurator.SetKebabCaseEndpointNameFormatter();
             busConfigurator.UsingRabbitMq((context, configurator) =>

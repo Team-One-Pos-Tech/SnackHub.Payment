@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
-using SnackHub.PaymentService.Infra.Gateways.MercadoPago.Models;
 using SnackHub.PaymentService.Infra.Gateways.MercadoPago.Models.POS;
 using SnackHub.PaymentService.Infra.Gateways.MercadoPago.Models.QRCode;
 using SnackHub.PaymentService.Infra.Gateways.MercadoPago.Models.Store;
