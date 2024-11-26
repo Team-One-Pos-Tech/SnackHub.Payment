@@ -13,4 +13,3 @@ jobs:
     with:
       image-name: "team-one-pos-tech/snack-hub-payment-service"
       api-entrypoint-binary: "SnackHub.PaymentService.Api.dll"
-      
