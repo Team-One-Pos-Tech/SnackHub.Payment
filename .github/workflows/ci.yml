@@ -5,6 +5,7 @@ jobs:
     with:
       solution-name: "SnackHub.PaymentService.sln"
       api-project-name: "SnackHub.PaymentService.Api"
+      sonar-project-key: "Team-One-Pos-Tech_SnackHub.Payment"
       
   docker-setup:
     needs: build-and-test
@@ -12,3 +13,4 @@ jobs:
     with:
       image-name: "team-one-pos-tech/snack-hub-payment-service"
       api-entrypoint-binary: "SnackHub.PaymentService.Api.dll"
+      
