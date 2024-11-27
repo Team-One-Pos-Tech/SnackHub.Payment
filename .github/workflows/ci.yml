@@ -1,11 +1,14 @@
-on: [push]
+on: [ push ]
 jobs:
   build-and-test:
     uses: Team-One-Pos-Tech/SnackHub.SharedWorkFlows/.github/workflows/build.yml@main
     with:
       solution-name: "SnackHub.PaymentService.sln"
       api-project-name: "SnackHub.PaymentService.Api"
-      
+      sonar-project-key: "Team-One-Pos-Tech_SnackHub.Payment"
+    secrets:
+      sonar-token: ${{secrets.SONAR_TOKEN}}
+  
   docker-setup:
     needs: build-and-test
     uses: Team-One-Pos-Tech/SnackHub.SharedWorkFlows/.github/workflows/dockerize.yml@main
