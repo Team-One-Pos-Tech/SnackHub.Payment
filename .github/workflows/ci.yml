@@ -13,4 +13,7 @@ jobs:
     with:
       image-name: "team-one-pos-tech/snack-hub-payment-service"
       api-entrypoint-binary: "SnackHub.PaymentService.Api.dll"
-      
+
+env:
+  SONAR_TOKEN: '${{ secrets.SONAR_TOKEN }}'
+  GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
