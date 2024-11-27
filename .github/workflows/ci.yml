@@ -6,6 +6,8 @@ jobs:
       solution-name: "SnackHub.PaymentService.sln"
       api-project-name: "SnackHub.PaymentService.Api"
       sonar-project-key: "Team-One-Pos-Tech_SnackHub.Payment"
+    secrets:
+      sonar-token: ${{secrets.SONAR_TOKEN}}
   
   docker-setup:
     needs: build-and-test
