@@ -12,9 +12,8 @@ public class PaymentRequestedConsumer : IConsumer<PaymentRequested>
     private readonly ILogger<PaymentRequestedConsumer> _logger;
     private readonly ITransactionRepository _transactionRepository;
 
-
     public PaymentRequestedConsumer(
-        ILogger<PaymentRequestedConsumer> logger, 
+        ILogger<PaymentRequestedConsumer> logger,
         ITransactionRepository transactionRepository)
     {
         _logger = logger;
@@ -28,7 +27,7 @@ public class PaymentRequestedConsumer : IConsumer<PaymentRequested>
             context.Message.OrderId,
             context.Message.CustomerId,
             context.Message.Amount);
-        
+
         await _transactionRepository.CreateAsync(paymentTransaction);
     }
 }
