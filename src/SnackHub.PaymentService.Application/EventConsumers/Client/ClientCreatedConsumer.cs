@@ -12,7 +12,7 @@ public class ClientCreatedConsumer : IConsumer<ClientCreated>
     private readonly IClientRepository _clientRepository;
 
     public ClientCreatedConsumer(
-        ILogger<ClientCreatedConsumer> logger, 
+        ILogger<ClientCreatedConsumer> logger,
         IClientRepository clientRepository)
     {
         _clientRepository = clientRepository;
@@ -21,7 +21,9 @@ public class ClientCreatedConsumer : IConsumer<ClientCreated>
 
     public async Task Consume(ConsumeContext<ClientCreated> context)
     {
-        _logger.LogInformation("A new client with identifier [{clientIdentifier}] has been added service by a external service!", context.Message.Id);
+        _logger.LogInformation(
+            "A new client with identifier [{clientIdentifier}] has been added service by a external service!",
+            context.Message.Id);
 
         var client = Domain.Entities.Client.Create(context.Message.Id, context.Message.Name, context.Message.Email);
         await _clientRepository.AddAsync(client);
